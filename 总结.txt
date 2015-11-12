@@ -1,0 +1,42 @@
+一、简介
+环境：ubuntu 14.04 + opencv 2.4.10
+vatic_opencv的程序文件结构详见
+https://github.com/johndoherty/vatic/blob/master/DEVELOPERS.md
+安装及使用说明详见
+https://github.com/johndoherty/vatic
+
+
+二、配置注意事项：
+1、opencv在linux编译安装时要加上OPENCV_BUILD_3RDPARTY_LIBS，以依赖第三方图像库，同时需安装libjpeg-dev等第三方图像库
+详见 http://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imread
+编译安装opencv时可用github上的安装脚本 https://github.com/jayrambhia/Install-OpenCV
+
+2、作者新加的start_server.py在我机器上无法启动，最后还是用了apache2做服务
+
+
+三、代码注意事项：
+1、作者在框架里写了前向跟踪online、双向跟踪bidirectional、多目标跟踪multiobject（详见vatic_tracking/tracking/api.py），
+但只对online、bidirectional进行了实现，FullTrack功能未实现（web页面上为None），而且除了compressive算法为C++，其余均为python代码。
+
+2、前向跟踪online的接口里代码有错（详见vatic_tracking/tracking/api.py），在online函数中：
+if start not in paths[pathid].boxes:
+	return Path(path.label, path.id, {})
+应改为
+if start not in paths[pathid].boxes:
+	path=paths[pathid]
+	return Path(path.label, path.id, {})
+
+3、由于无法启用start_server.py，因此无法进行短点调试，故采用写日志的方式进行debug
+
+4、TLD模块的说明见   TLD加强版说明.pptx
+
+
+四、使用注意事项：
+详见   使用说明.txt
+
+
+
+
+
+
+

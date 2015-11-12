@@ -1,0 +1,28 @@
+工程在		~/vatic-opencv
+待标注视频	~/vatic-opencv/video_file
+标注结果	~/vatic-opencv/label_file
+标注结果可视化	~/vatic-opencv/result_show
+
+
+标注流程：
+1、到video_file文件夹下查看待标注视频的名称   例如a.avi
+2、打开vatic-opencv_start.sh文件，只修改video_name变量
+3、打开终端(快捷键ctrl+alt+T)，执行以下命令
+cd ~/vatic-opencv/
+./vatic-opencv_start.sh
+4、程序运行得到一系列网址，将网址复制到浏览器中，即可开始标注
+
+
+
+结果导出流程：
+1、打开vatic-opencv_get_result.sh文件，只修改video_name变量
+2、在终端执行以下命令，导出标注结果，及可视化结果
+cd ~/vatic-opencv/
+./vatic-opencv_get_result.sh
+
+
+其他【慎用】：
+清除数据（清除标注数据及结果）
+cd ~/vatic-opencv/
+./vatic-opencv_clean.sh
+
